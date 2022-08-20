@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+	<meta charset="UTF-8">
+	<meta http-equiv="X-UA-Compatible" content="IE=edge">
+	<meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<title>The CheckList</title>
+	<!--CDN ajouter un script pour intégrer Vue Js dans html : voir message dans console-->
+	<script src="https://unpkg.com/vue@3"></script>	
+</head>
+<body>
+	<!--rendu déclaratif-->
+	<div id="app">
+		<!--v-bind donne la data en survol-->
+		<h1 v-bind:title="title">
+			{{ title }}</h1>
+		<!--typing in input change automatically data message, even in title-->
+		<vform @newtodo="addToDo"></vform>
+		<!--v-bind lie aux données soit : soit v-bind: / v-on: s'occupe des events (ou @)-->
+		<todo v-for="todo in todos":key="todo.id" @click="unsort" :content="todo.content"></todo>
+		<!--v-show to toggle component visibility-->
+		<div v-show="showModal" />
+	</div>
+
+<script>
+  const { createApp } = Vue
+	// vm.message dans la console
+  const vm = createApp({
+    data() {
+      return {
+		title: "hello !",
+		showModal: false,
+		price1 : 2,
+		price2 : 4,
+		// computed for reactive data
+		computed: {
+			totalamount() {
+				return this.price1 + this.price2;
+			}
+		},
+		todos:[{
+			id: 1,
+			content: 'sauver le monde'},
+			{id: 2,
+			content:'aller manger'}]
+      }
+    },
+	methods:{
+		unsort(){
+			this.todos.reverse();
+		},
+		addToDo(message) {
+			this.todos.push({id:this.todos.length, content:message});
+		}
+	}
+  })
+  vm.component('todo', {
+	props: ['content'],
+	template : `<p> {{ content }} </p>`
+  })
+  vm.component('vform', {
+	props: [],
+	emits:['newtodo'],
+	data() {
+		return {interne : "nouveau message"}
+	},
+	methods: {
+		register() {
+			this.$emit("newtodo", this.interne);
+			this.interne = '';
+		}
+	},
+	template : `<input v-model="interne" />
+		<a v-if="interne != ''" href="#" @click="register" >ADD</a>
+		{{interne}}`
+  })
+  vm.mount('#app');
+</script>
+</body>
+</html>
+
