@@ -1,6 +1,12 @@
 import { createRouter, createWebHistory } from 'vue-router'
 import HomeView from '../views/HomeView.vue'
 
+/*Par défaut, Vue Router utilise le mode  hash 
+pour s'assurer qu'il fonctionne sur tous les navigateurs,
+quelle que soit la configuration du serveur.
+Le mode historique HTML5 nécessite une configuration supplémentaire,
+que vous pouvez découvrir dans la documentation.*/
+
 const routes = [
 	{
 		path: '/',
