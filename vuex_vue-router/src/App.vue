@@ -1,10 +1,13 @@
 <template>
+	<!-- menu -->
 	<nav>
 		<router-link to="/">Home</router-link> |
 		<router-link to="/about">About</router-link> |
-		<router-link to="/new">New</router-link>
-		<router-view></router-view>
+		<router-link to="/new">Api Call</router-link> |
+		<router-link to="/login">Login</router-link> |
+		<router-link to="/profile/peter">Profile</router-link>
 	</nav>
+	<!-- content below -->
 	<router-view />
 </template>
 

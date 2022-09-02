@@ -15,7 +15,7 @@
 <script>
 import { ref, watch } from 'vue';
 export default {
-	// _ replace props if no props below
+	// "_" replace props if no props below
 	setup(_, context) {
 		const enteredText = ref("");
 		const invalidInput = ref(false);

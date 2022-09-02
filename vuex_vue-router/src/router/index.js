@@ -1,5 +1,8 @@
 import { createRouter, createWebHistory } from 'vue-router'
-import HomeView from '../views/HomeView.vue'
+import HomeView from '../views/HomeView.vue';
+import LoginView from '../views/LoginView.vue';
+import ProfileView from '../views/ProfileView.vue';
+import PageNotFound from '../components/PageNotFound.vue';
 
 /*Par défaut, Vue Router utilise le mode  hash 
 pour s'assurer qu'il fonctionne sur tous les navigateurs,
@@ -25,6 +28,21 @@ const routes = [
 		path: '/new',
 		name: 'newview',
 		component: () => import(/* webpackChunkName: "new" */ '../views/NewView.vue')
+	},
+	{
+		path: '/login',
+		name: 'login',
+		component: LoginView
+	},
+	{
+		path: '/profile/:name',
+		name: 'profile',
+		component: ProfileView
+	},
+	{
+		path: '/:pathMatch(.*)*',
+		name: 'notFound',
+		component: PageNotFound
 	}
 ]
 
