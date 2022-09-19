@@ -1,12 +1,18 @@
 <template>
+	<h2>TO DO LIST</h2>
 	<course-goals></course-goals>
+	<hr />
+	<h2>SIGN UP FORM</h2>
+	<sign-up-form />
 </template>
 
 <script>
 import CourseGoals from "./components/CourseGoals.vue";
+import SignUpForm from "./components/Form/SignUpForm.vue";
 export default {
 	components: {
 		CourseGoals,
+		SignUpForm
 	},
 };
 </script>
